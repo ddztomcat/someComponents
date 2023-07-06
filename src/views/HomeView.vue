@@ -12,15 +12,21 @@ setInterval(() => {
 </script>
 
 <template>
-  <main>
+  <div class="wrap">
     <div class="flex">
       <Num :number="ns"></Num>
     </div>
     <NumCount :number="ns"></NumCount>
-  </main>
+  </div>
 </template>
-<style>
+<style lang="scss" scoped>
 .flex {
   display: flex;
+}
+.wrap {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(280px, 1fr));
 }
 </style>
