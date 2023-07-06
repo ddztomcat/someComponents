@@ -1,16 +1,12 @@
 <template>
-  <div class="box">
-    <span class="num" :style="`transform: translate(-50%, -${number * 10}%)`">0123456789</span>
+  <div class="box" v-for="(n, i) in number" :key="i">
+    <span class="num" :style="`transform: translate(-50%, -${n * 10}%)`">0123456789</span>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
-  number: {
-    type: Number,
-    default: 5,
-    required: true
-  }
+withDefaults(defineProps<{ number: number[] }>(), {
+  number: () => []
 })
 </script>
 
@@ -28,11 +24,14 @@ defineProps({
   position: relative;
   writing-mode: vertical-lr;
   text-orientation: upright;
+  &:last-of-type {
+    margin-right: 0;
+  }
 }
 .num {
   position: absolute;
   left: 50%;
-  top: 10px;
+  top: 0px;
   font-size: 62px;
   color: #ffffff;
   transition: all 1.5s;
